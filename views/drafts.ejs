@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs", {currentPage: "Drafts"}) %>
+<body>
+    <div class="container">
+        <div class="row">
+            <%- include("partials/sidebar.ejs", {data: data, drafts: drafts}) %>
+            <div class="col-8">
+                <% if (locals.drafts && Object.keys(drafts).length > 0) { %>
+                    <h1>Your Drafts
+                    (<%= Object.keys(drafts).length %>)
+                    </h1>
+                    <ol class="pb-1 fs-2"> 
+                        <% for (var i = 0; i < Object.keys(drafts).length; i++) { %>
+                            <li class="my-2">
+                                <form action="/editDraft" method="post">
+                                    <input type="submit" class="bg-primary text-white fs-5 rounded" value="Edit"><br />
+                                    <input type="text" class="my-2 fs-2" readonly id="title" name="title" value="<%= drafts[Object.keys(drafts)[i]].title %>"><br />
+                                    <label for="author-name" class="fs-4">By: </label>
+                                    <input type="text" class="my-2 fs-4" readonly id="authorName" name="authorName" value="<%= drafts[Object.keys(drafts)[i]].authorName %>"><br />
+                                    <label for="date" class="fs-4">Modified: </label>
+                                    <input type="text" class="my-2 fs-4" readonly id="date" name="date" value="<%= drafts[Object.keys(drafts)[i]].date %>"><br />
+                                    <textarea readonly class="my-2 fs-5" id="bodyText" name="bodyText"><%= drafts[Object.keys(drafts)[i]].bodyText %></textarea><br />
+                                    <input type="text" hidden id="id" name="id" value="<%= drafts[Object.keys(drafts)[i]].id %>">
+                                </form>
+                            </li>
+                        <% } %>
+                    </ol> 
+                <% } else { %>
+                    <p class="fs-5 mt-3">No Drafts Saved</p>
+                <% } %>
+            </div>
+        </div>
+        <div class="row">
+            <%- include("partials/footer.ejs") %>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs", {currentPage: "Posts"}) %>
+<body>
+    <div class="container">
+        <div class="row">
+            <%- include("partials/sidebar.ejs", {data: data, drafts: drafts}) %>
+            <div class="col-8">
+                <% if (locals.blogTitle) { %>
+                    <form action="/editPost" method="post">
+                        <input type="submit" class="bg-primary text-white fs-5 rounded" value="Edit Post">
+                        <input type="text" hidden id="title" name="title" value="<%= blogTitle %>">
+                        <input type="text" hidden id="authorName" name="authorName" value="<%= blogAuthor %>">
+                        <input type="text" hidden id="date" name="date" value="<%= blogDate %>">
+                        <textarea id="bodyText" name="bodyText" hidden><%= blogText %></textarea>
+                        <input type="text" hidden id="id" name="id" value="<%= blogID %>">
+                    </form>
+                    <% if (locals.blogTitle) { %>
+                        <p class="fs-1 my-2"><%= blogTitle %></p>
+                        <p class="fs-4 my-2">By: <%= blogAuthor %></p>
+                        <p class="fs-4 my-2">Modified: <%= blogDate %></p>
+                        <p class="fs-5 my-4" id="bodyText"><%= blogText %></p>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+        <div class="row">
+            <%- include("partials/footer.ejs") %>
+        </div>
+    </div>
+</body>

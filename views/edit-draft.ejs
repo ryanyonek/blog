@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs", {currentPage: "Drafts"}) %>
+<body>
+    <div class="container">
+        <div class="row">
+            <%- include("partials/sidebar.ejs", {data: data, drafts: drafts}) %>
+            <div class="col-8">
+                <h1>Edit Draft</h1>
+                <% if (locals.blogTitle) { %>
+                    <form action="/editedDraft" class=" my-5" method="POST">
+                        <input type="submit" class="bg-primary text-white float-start fs-5 rounded" name="action" value="Save as Draft"><br /><br />
+                        <input type="submit" class="bg-success text-white float-start fs-5 rounded" name="action" value="Post">
+                        <input type="submit" class="bg-danger text-white float-end fs-5 rounded" name="action" value="Delete Draft"> <br />
+                        <input type="text" class="fs-3 fs-sm-4 my-3" id="title" name="title" value="<%= blogTitle %>" placeholder="Enter your title here..." required><br />
+                        <label for="author-name" class="fs-4">By: </label>
+                        <input type="text" class="fs-4 fs-sm-5 my-3" id="authorName" name="authorName" value="<%= blogAuthor %>" placeholder="ex: Jane Doe" required><br />
+                        <input type="text" id="id" name="id" hidden value="<%= blogID %>"><br />
+                        <p class="fs-4">Modified: <%= blogDate %></p>
+                        <textarea class="flexible-textarea fs-5 fs-sm-6 my-3" id="bodyText" name="bodyText" placeholder="Start your post here..." required><%= blogText %></textarea><br />
+                    </form>
+                <% } %>
+            </div>
+        </div>
+        <div class="row">
+            <%- include("partials/footer.ejs") %>
+        </div>
+    </div>
+</body>

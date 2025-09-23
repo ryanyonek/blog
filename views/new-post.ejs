@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs", {currentPage: "New"}) %>
+<body>
+    <div class="container">
+        <div class="row">
+            <%- include("partials/sidebar.ejs", {data: data, drafts: drafts}) %>
+            <div class="col-8">
+                <h1>Create a New Blog Post</h1>
+                <form action="/" class=" my-5" method="POST">
+                    <input type="text" class="fs-3 fs-sm-4 my-3" id="title" name="title" placeholder="Untitled" required><br />
+                    <label for="author-name" class="fs-4">By: </label>
+                    <input type="text" class="fs-4 fs-sm-5 my-3" id="authorName" name="authorName" placeholder="ex: Jane Doe" required><br />
+                    <textarea class="flexible-textarea fs-5 fs-sm-6 my-3" id="bodyText" name="bodyText" placeholder="Start your post here..." required></textarea><br />
+                    <input type="submit" class="bg-success text-white float-start fs-5 rounded" name="action" value="Post">
+                    <input type="submit" class="bg-primary text-white float-end fs-5 rounded" name="action" value="Save as Draft">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <%- include("partials/footer.ejs") %>
+        </div>
+    </div>
+</body>
+
+

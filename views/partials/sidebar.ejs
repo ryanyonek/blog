@@ -1,0 +1,46 @@
+<div class="col-sm-12 col-md-4 p-3 "> 
+    <ul class="list-unstyled ps-0"> 
+        <li class="mb-1"> 
+            <p class="fs-5">Your Posts
+                <% if (locals.data && Object.keys(data).length > 0) { %>
+                (<%= Object.keys(data).length %>)
+                <% } %>
+            </p> 
+            <ol class="pb-1"> 
+                <% for (var i = 0; i < Object.keys(data).length; i++) { %>
+                    <li class="my-2">
+                        <form action="/viewPost" method="post">
+                            <input type="text" hidden id="title" name="title" value="<%= data[Object.keys(data)[i]].title %>">
+                            <input type="text" hidden id="authorName" name="authorName" value="<%= data[Object.keys(data)[i]].authorName %>">
+                            <input type="text" hidden id="date" name="date" value="<%= data[Object.keys(data)[i]].date %>">
+                            <textarea hidden id="bodyText" name="bodyText"><%= data[Object.keys(data)[i]].bodyText %></textarea>
+                            <input type="text" hidden id="id" name="id" value="<%= data[Object.keys(data)[i]].id %>">
+                            <input type="submit" class="bg-success text-white rounded" value="<%= data[Object.keys(data)[i]].title %>">
+                        </form>
+                    </li>
+                <% } %>
+            </ol> 
+        </li>
+        <li class="mb-1"> 
+            <p class="fs-5">Your Drafts
+                <% if (locals.drafts && Object.keys(drafts).length > 0) { %>
+                (<%= Object.keys(drafts).length %>)
+                <% } %>
+            </p> 
+            <ol class="pb-1"> 
+                <% for (var i = 0; i < Object.keys(drafts).length; i++) { %>
+                    <li class="my-2">
+                        <form action="/editDraft" method="post">
+                            <input type="text" hidden id="title" name="title" value="<%= drafts[Object.keys(drafts)[i]].title %>">
+                            <input type="text" hidden id="authorName" name="authorName" value="<%= drafts[Object.keys(drafts)[i]].authorName %>">
+                            <input type="text" hidden id="date" name="date" value="<%= drafts[Object.keys(drafts)[i]].date %>">
+                            <textarea hidden id="bodyText" name="bodyText"><%= drafts[Object.keys(drafts)[i]].bodyText %></textarea>
+                            <input type="text" hidden id="id" name="id" value="<%= drafts[Object.keys(drafts)[i]].id %>">
+                            <input type="submit" class="bg-primary text-white rounded" value="<%= drafts[Object.keys(drafts)[i]].title %>">
+                        </form>
+                    </li>
+                <% } %>
+            </ol> 
+        </li>  
+    </ul>
+</div>
