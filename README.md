@@ -6,11 +6,12 @@ This project is available for local hosting only.
 
 ### Clone Repository
 - git clone https://github.com/ryanyonek/blog.git
+- cd blog
 
 ### Install the Included NPM Packages
 Navigate to the cloned repository directory and use this command:
 
-- npm init i
+- npm i
 
 ### Run Node.js application in Debug Mode With Nodemon (Optional)
 Can be installed once globally using this command:
@@ -25,4 +26,7 @@ In the terminal, use the nodemon command or the standard node command:
 - nodemon index.js
 
 - node index.js
+
+## Screenshot of Blog Project
+[blog project](./public/images/screenshot-blog.png)
 
